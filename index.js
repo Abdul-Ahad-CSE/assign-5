@@ -99,3 +99,37 @@ document.getElementById('clear-btn').
 addEventListener('click',function(){
     document.getElementById('log-text').innerText = "";
 })
+
+
+//Copy Button Functionality:
+
+//Copy button functionality :
+function addCopyListener(boxId,boxNum) {
+
+    document.getElementById(boxId).addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const mainCopy = document.getElementById('main-copy');
+
+    //copied to clipboard funtionality
+    const box = document.getElementById(`box-${boxNum}`);
+    const pTags = box.getElementsByTagName('p');
+    const text2 = pTags[2].innerText;
+
+        navigator.clipboard.writeText(text2)
+      .then(() => {
+        alert("Copied Number " + text2);
+
+        const currentCount = parseInt(mainCopy.innerText);
+        mainCopy.innerText = currentCount + 1;
+      })
+      .catch(err => {
+        console.error("Failed to copy: ", err);
+      });
+  });
+   
+  };
+
+for (let i = 1; i <= 9; i++) {
+  addCopyListener(`box-${i}-copy`,i);
+}
