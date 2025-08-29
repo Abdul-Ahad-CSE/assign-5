@@ -31,10 +31,7 @@ Ans:
 Event bubbling means that when an event is triggered on a child element, it bubbles up (propagates) to its parent, then grandparent, and so on until document.
 
 Example: 
-suppose we have a div like this: 
-<!-- <div id="parent">
-  <button id="child">Click Me</button>
-</div> -->
+suppose we have a div with a id = "parent" and a button with a id = "child" containing text 'Click Me'
 
 now , in the javascript file, if we write this: 
 document.getElementById("parent").addEventListener("click", () => {
@@ -89,44 +86,3 @@ document.getElementById("child").addEventListener("click", (e) => {
 
 
 
-//Copy button functionality :
-function addCopyListener(boxId,boxNum) {
-
-    document.getElementById(boxId).addEventListener('click', function(e) {
-    e.preventDefault();
-
-    const mainCopy = document.getElementById('main-copy');
-    
-        switch(boxNum){
-            case 1:
-                alert("Copied number 999..."); break;
-            case 2:
-                alert("Copied number 999..."); break;
-            case 3:
-                alert("Copied number 999..."); break;
-            case 4:
-                alert("Copied number 1994-999999..."); break;
-            case 5:
-                alert("Copied number 109..."); break;
-            case 6:
-                alert("Copied number 106..."); break;
-            case 7:
-                alert("Copied number 16216..."); break;
-            case 8:
-                alert("Copied number 16445..."); break;
-            case 9:
-                alert("Copied number 163..."); break;
-        }
-
-    const currentCount = parseInt(mainCopy.innerText);
-
-   
-
-    mainCopy.innerText = currentCount + 1;
-  });
-}
-
-
-for (let i = 1; i <= 9; i++) {
-  addCopyListener(`box-${i}-copy`,i);
-}
